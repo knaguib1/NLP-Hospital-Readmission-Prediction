@@ -2,6 +2,7 @@
 # Hospital re-admission prediction from clinical discharge notes
 ### Dan Chen, Kevin Cooper, Kareem Naguib, Patrick O’Brien
 
+#### Spark-NLP for Healthcare (John Snow Labs) Setup
 While much of Spark NLP is open source, many of the healthcare-specific
 models are only accessible via spark-nlp-jsl, which requires an account and free trial with John Snow Labs. The following will guide you in how to set up your environment to use
 Spark NLP for Healthcare.
