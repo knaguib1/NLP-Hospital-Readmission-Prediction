@@ -176,9 +176,9 @@ def df_to_sparkDF(spark, df, s=11000):
     for j in range(1, n):
         chunk = df.iloc[j*s:(j+1)*s]
     
-    print(chunk.shape)
-    tmp = spark.createDataFrame(chunk)
-    psc = psc.union(tmp)
+        print(chunk.shape)
+        tmp = spark.createDataFrame(chunk)
+        psc = psc.union(tmp)
     
     return psc
     
@@ -231,7 +231,7 @@ def readmission_etl(spark, client, nDays=30, s=11000):
     # clean text data
     psc = clean_text(psc)
     
-    print('Completed script...', datetime.now())
+    print('Completed etl script...', datetime.now())
     
     return psc
    

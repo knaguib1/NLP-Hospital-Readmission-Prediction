@@ -60,7 +60,7 @@ def segment_text(spark, sqlContext, psc):
     
     return df
     
-def class_balance(df):
+def class_balance(df, nDays):
 
     adm = df[['ID', 'Label']].drop_duplicates()
     
@@ -126,8 +126,14 @@ def class_balance(df):
     
     print('check overlap:', (pd.Index(x).intersection(pd.Index(neg_ind_use))).values)
     print('oversample negative cases...')
+    
     # get more negative samples
-    neg_ind_touse = x.sample(n=1000, random_state=1)
+    if nDays == 30:
+        nSamples = 500
+    else:
+        nSamples = 1000
+    
+    neg_ind_touse = x.sample(n=nSamples, random_state=1)
     
     df_train = pd.concat([df[df.ID.isin(neg_ind_touse)], df_train])
 
