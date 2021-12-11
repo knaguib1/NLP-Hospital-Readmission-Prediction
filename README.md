@@ -2,7 +2,12 @@
 # Hospital re-admission prediction from clinical discharge notes
 ### Dan Chen, Kevin Cooper, Kareem Naguib, Patrick O’Brien
 
-#### Spark-NLP for Healthcare (John Snow Labs) Setup
+#### 1. Google Cloud Environment Setup
+Google Big Query and Colab were the technologies used in this project. Below are instructions for setting up your environment. 
+1. [Create a new project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) in Google Cloud Platform. You will need to record your project id and project number to connect to Big Query from Colab notebook.
+2. [Create a new dataset](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-cloud-console) in Google Big Query - upload relevent MIMIC III datasets. 
+
+#### 2. Spark-NLP for Healthcare (John Snow Labs) Setup
 While much of Spark NLP is open source, many of the healthcare-specific
 models are only accessible via spark-nlp-jsl, which requires an account and free trial with John Snow Labs. The following will guide you in how to set up your environment to use
 Spark NLP for Healthcare.
