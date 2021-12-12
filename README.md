@@ -67,7 +67,7 @@ The final cleaned data file is expected to have columns named as "TEXT", "ID" an
 
 The data folder is expected as following for an example:
 ```
-└───discharge_30
+└───readmit_30
         test.csv
         train.csv
         val.csv
