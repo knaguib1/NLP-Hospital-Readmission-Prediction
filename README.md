@@ -1,5 +1,5 @@
 # BD4H NLP Final Project
-# Hospital readmission prediction from clinical ICU discharge notes
+# Hospital readmission prediction from clinical discharge notes
 #### Authors: Dan Chen, Kevin Cooper, Kareem Naguib, Patrick O’Brien
 
 ### Platform
@@ -49,7 +49,7 @@ os.environ.update(license_keys)
 
 ### Datasets and Cohort  
 We use [MIMIC-III](https://mimic.mit.edu/) patient, admission, ICU stay and event notes data.  
-Readmission was counted by the day interval between two consecutive admissions. Admission type death was excluded for approach 1 modeling and newborn was also excluded for approach 2 and 3.
+Readmission was counted by the day interval between two consecutive admissions. Admission type death was excluded for approach 1 modeling and newborn was also excluded for approach 2 and 3.  
 
 
 ### Approach
@@ -131,7 +131,9 @@ python clinicalBERT/run_readmission.py \
 ```
 
 ### Result
-Readmission within 30 days prediction
+Explainatory analysis on readmission, admission type, age, gender, note length, etc. could be find at this notebook [readmit_explainatory_analysis](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/readmit_explainatory_analysis.ipynb) and all the output figures are stored in the [figures](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/figures) folder
+
+Readmission within 30 days prediction and ROC and PR curves can be find at [result_readmit30](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/src/result_readmit30)
 
 | Model	| AUROC |	AUPRC |	F1-Score |
 | ------------- |:-------------:|:-------------:|:-------------:|
@@ -144,7 +146,7 @@ Readmission within 30 days prediction
 |Word2Vec with Random Forest	|0.62|	0.624|	0.606|
 
 
-Readmission within 6 months(180 days) prediction
+Readmission within 6 months(180 days) prediction and ROC and PR curves can be find at [result_discharge180](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/src/discharge180_mymodel)
 
 |Model|	AUROC|	AUPRC|	F1-Score|
 | ------------- |:-------------:|:-------------:|:-------------:|
@@ -152,6 +154,8 @@ Readmission within 6 months(180 days) prediction
 |TF-IDF with Logistic Regression with L2 Regularization	|0.672|	0.691|	0.631|
 |TF-IDF with Random Forest|	0.702|	0.72|	0.664|
 |ClinicalBERT|0.758|	0.75 | |	
+
+Our retrained model for 6 month performs worse than the model in [1] so here we keep the result from original ClinicalBERT model. Reason may due to our limited computation resources, which is only able to run 12 batch size and one iteration takes about 1hr.
 
 ### Reference
 [1] Kexin Huang, Jaan Altosaar, and Rajesh Ranganath. ClinicalBERT: Modeling CLinical Notes and Predicting Hospital Readmission. arXiv:1904.05342, 2019.
