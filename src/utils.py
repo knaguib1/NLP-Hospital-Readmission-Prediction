@@ -61,6 +61,7 @@ def segment_text(spark, sqlContext, psc):
     return df
     
 def class_balance(df, nDays):
+#  Reference: https://github.com/kexinhuang12345/clinicalBERT/blob/master/preprocess.py
 
     adm = df[['ID', 'Label']].drop_duplicates()
     
