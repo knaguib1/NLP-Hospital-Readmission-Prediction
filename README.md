@@ -105,33 +105,34 @@ pip install pytorch-pretrained-bert
 git clone https://github.com/kexinhuang12345/clinicalBERT.git
 ```
 #### 3.2 Prediction
+In order to run the code below please put the cleaned data folder, for example readmit_30, under the src folder  
 Run prediction for 30-day readmission using above discharge_readmission model
 ```
-python clinicalBERT/run_readmission.py \
+python src/clinicalBERT/run_readmission.py \
   --task_name readmission \
   --readmission_mode discharge \
   --do_eval \
-  --data_dir discharge_30/ \
+  --data_dir readmit_30/ \
   --bert_model  clinicalBERT/model/discharge_readmission \
   --max_seq_length 512 \
   --output_dir ./result_readmit30
 ```
 Retrain the model for 180-day readmission from pretraining ClinicalBERT and do prediction
 ```
-python clinicalBERT/run_readmission.py \
+python src/clinicalBERT/run_readmission.py \
   --task_name readmission \
   --readmission_mode discharge \
   --do_train 12 \
   --do_eval \
   --eval_batch_size 16 \
-  --data_dir spark_discharge_180/ \
+  --data_dir readmit_180/ \
   --bert_model  discharge180_mymodel/ \
   --max_seq_length 512 \
   --output_dir ./result_discharge180_mymodel
 ```
 
 ### Result
-Explainatory analysis on readmission, admission type, age, gender, note length, etc. could be find at this notebook [readmit_explainatory_analysis](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/readmit_explainatory_analysis.ipynb) and all the output figures are stored in the [figures](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/figures) folder
+Explainatory analysis on readmission, admission type, age, gender, note length, etc. could be find at this notebook [readmit_explainatory_analysis](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/readmit_explainatory_analysis.ipynb)
 
 Readmission within 30 days prediction and ROC and PR curves can be find at [result_readmit30](https://github.gatech.edu/kcooper72/bd4h_nlp_final_project/blob/main/src/result_readmit30)
 
